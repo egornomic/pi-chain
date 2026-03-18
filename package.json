@@ -1,0 +1,16 @@
+{
+  "name": "pi-chain",
+  "version": "0.1.0",
+  "description": "Pi extension that starts a new session seeded with the last assistant reply",
+  "type": "module",
+  "keywords": ["pi-package", "pi", "pi-coding-agent", "extension", "session"],
+  "license": "MIT",
+  "files": ["index.ts", "README.md", "LICENSE"],
+  "pi": {
+    "extensions": ["./index.ts"]
+  },
+  "peerDependencies": {
+    "@mariozechner/pi-coding-agent": "*",
+    "@mariozechner/pi-ai": "*"
+  }
+}
