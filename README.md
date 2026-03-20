@@ -2,7 +2,7 @@
 
 `/chain` for [pi coding agent](https://pi.dev/).
 
-It starts a brand-new session and seeds that new session with the last assistant reply from the current session. The carried-over message stays an assistant message, so the new chat opens with context already visible and waits for your next user prompt.
+It starts a brand-new session and seeds that new session with recent conversation messages from the current session. By default it carries over the last visible user or assistant message. When you pass a number, it carries over that many recent visible user and assistant messages.
 
 ## Install
 
@@ -26,11 +26,19 @@ Once installed, run:
 /chain
 ```
 
+Or choose how many recent messages to carry over:
+
+```text
+/chain 3
+```
+
 Behavior:
 
-- Finds the last assistant reply in the current session branch
+- Finds the last visible user or assistant message by default
+- Accepts `/chain N` to carry over the last `N` visible user and assistant messages
+- Ignores non-conversation entries such as tool results
 - Opens a new session with parent-session tracking
-- Inserts that reply into the new session as an assistant message
+- Inserts the carried-over messages into the new session in their original order
 - Leaves the editor ready for your next prompt
 
 ## Example
@@ -38,24 +46,30 @@ Behavior:
 Current session ends with:
 
 ```text
-Assistant: Here is the migration plan for the billing rollout.
+User: What should I tackle first?
+Assistant: Start with the schema migration.
+User: What comes after that?
+Assistant: Roll out the backfill job.
 ```
 
 Then you run:
 
 ```text
-/chain
+/chain 3
 ```
 
 New session starts as:
 
 ```text
-Assistant: Here is the migration plan for the billing rollout.
+Assistant: Start with the schema migration.
+User: What comes after that?
+Assistant: Roll out the backfill job.
 User: _you type the next prompt here_
 ```
 
 ## Notes
 
-- `/chain` only uses the last assistant reply, not the last user message.
-- Only visible text from the assistant reply is carried forward.
-- If the current session has no assistant reply yet, the command shows a warning and does nothing.
+- `/chain` without a number behaves like `/chain 1`.
+- Assistant replies keep only visible text.
+- User messages keep visible text and images.
+- If the current session has no visible user or assistant message yet, the command shows a warning and does nothing.
