@@ -1,16 +1,28 @@
 {
   "name": "pi-chain",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Pi extension that starts a new session seeded with recent conversation messages",
   "type": "module",
   "scripts": {
     "test": "node --test"
   },
-  "keywords": ["pi-package", "pi", "pi-coding-agent", "extension", "session"],
+  "keywords": [
+    "pi-package",
+    "pi",
+    "pi-coding-agent",
+    "extension",
+    "session"
+  ],
   "license": "MIT",
-  "files": ["index.ts", "README.md", "LICENSE"],
+  "files": [
+    "index.ts",
+    "README.md",
+    "LICENSE"
+  ],
   "pi": {
-    "extensions": ["./index.ts"]
+    "extensions": [
+      "./index.ts"
+    ]
   },
   "peerDependencies": {
     "@mariozechner/pi-coding-agent": "*",
