@@ -1,5 +1,5 @@
-import type { AssistantMessage, ImageContent, TextContent, Usage, UserMessage } from "@mariozechner/pi-ai";
-import type { ExtensionAPI, SessionEntry } from "@mariozechner/pi-coding-agent";
+import type { AssistantMessage, ImageContent, TextContent, Usage, UserMessage } from "@earendil-works/pi-ai";
+import type { ExtensionAPI, SessionEntry } from "@earendil-works/pi-coding-agent";
 
 type ConversationMessage = Extract<SessionEntry, { type: "message" }>["message"];
 type SeedMessage = AssistantMessage | UserMessage;
